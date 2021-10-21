@@ -1,5 +1,5 @@
 # Artray-TNIR-SDK
-**Development files based on .NET2 framework (x64 Windows) for Artray camera GUIs**
+**Development files based on .NET framework 2.0 (x64 hardware platform) for Artray camera GUIs**
 
 This code is a development branch of Artray sample source code Ver.1.3.1.3c available at the bottom of this page:
 http://www.artray.us/download_sdk.html
@@ -8,6 +8,8 @@ The executable file Sample_CS_2010.exe in the 'bin' folder is designed to be ope
 
 The source files are still a work in progress. The objective of the completed code is described in 
 '20211015 General description of program requirements for capture of images using Artray camera.docx'
+
+Install .NET Framework 3.5 to allow applications based on .NET Framework 2.0 to run in Windows 10.
 
 ## Usage
 
