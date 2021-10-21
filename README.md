@@ -6,6 +6,9 @@ http://www.artray.us/download_sdk.html
 
 The executable file Sample_CS_2010.exe in the 'bin' folder is designed to be operated with Artray USB3.0 InGaAs SWIR camera Model ARTCAM-990SWIR-TEC connected.
 
+The source files are still a work in progress. The objective of the completed code is described in 
+'20211015 General description of program requirements for capture of images using Artray camera.docx'
+
 ## Usage
 
 Make sure that ArtCamSdk_990SWIR_TEC.dll is located in the same folder as Sample_CS_2010.exe.
