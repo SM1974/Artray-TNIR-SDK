@@ -41,16 +41,22 @@ namespace Sample_CS
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.saveImageFolder = new System.Windows.Forms.TextBox();
+            this.baseFilename = new System.Windows.Forms.TextBox();
+            this.btn_Browse = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConsoleBox
             // 
-            this.ConsoleBox.Location = new System.Drawing.Point(12, 148);
+            this.ConsoleBox.Location = new System.Drawing.Point(12, 219);
             this.ConsoleBox.Multiline = true;
             this.ConsoleBox.Name = "ConsoleBox";
-            this.ConsoleBox.Size = new System.Drawing.Size(608, 290);
+            this.ConsoleBox.Size = new System.Drawing.Size(608, 219);
             this.ConsoleBox.TabIndex = 1;
+            this.ConsoleBox.Text = "Echo Console Window here";
             // 
             // groupBox1
             // 
@@ -75,7 +81,7 @@ namespace Sample_CS
             this.text_numSets_N.Name = "text_numSets_N";
             this.text_numSets_N.Size = new System.Drawing.Size(72, 20);
             this.text_numSets_N.TabIndex = 12;
-            this.text_numSets_N.Text = "0";
+            this.text_numSets_N.Text = "5";
             // 
             // label4
             // 
@@ -91,7 +97,7 @@ namespace Sample_CS
             this.text_exp_t.Name = "text_exp_t";
             this.text_exp_t.Size = new System.Drawing.Size(72, 20);
             this.text_exp_t.TabIndex = 10;
-            this.text_exp_t.Text = "0";
+            this.text_exp_t.Text = "2000";
             // 
             // text_int_T
             // 
@@ -99,7 +105,7 @@ namespace Sample_CS
             this.text_int_T.Name = "text_int_T";
             this.text_int_T.Size = new System.Drawing.Size(72, 20);
             this.text_int_T.TabIndex = 9;
-            this.text_int_T.Text = "0";
+            this.text_int_T.Text = "2000";
             // 
             // text_perSet_n
             // 
@@ -107,7 +113,7 @@ namespace Sample_CS
             this.text_perSet_n.Name = "text_perSet_n";
             this.text_perSet_n.Size = new System.Drawing.Size(72, 20);
             this.text_perSet_n.TabIndex = 8;
-            this.text_perSet_n.Text = "0";
+            this.text_perSet_n.Text = "2";
             // 
             // label3
             // 
@@ -154,11 +160,59 @@ namespace Sample_CS
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(20, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(145, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Image folder";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(20, 175);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Base filename";
+            // 
+            // saveImageFolder
+            // 
+            this.saveImageFolder.Location = new System.Drawing.Point(110, 139);
+            this.saveImageFolder.Name = "saveImageFolder";
+            this.saveImageFolder.Size = new System.Drawing.Size(378, 20);
+            this.saveImageFolder.TabIndex = 13;
+            this.saveImageFolder.Text = "C:\\Users\\sfm36\\Documents\\Artray\\EMVA_1288\\Images\\LED770";
+            // 
+            // baseFilename
+            // 
+            this.baseFilename.Location = new System.Drawing.Point(110, 172);
+            this.baseFilename.Name = "baseFilename";
+            this.baseFilename.Size = new System.Drawing.Size(378, 20);
+            this.baseFilename.TabIndex = 14;
+            this.baseFilename.Text = "ArtCam990_grey_LED770_zero-gain";
+            // 
+            // btn_Browse
+            // 
+            this.btn_Browse.Location = new System.Drawing.Point(527, 136);
+            this.btn_Browse.Name = "btn_Browse";
+            this.btn_Browse.Size = new System.Drawing.Size(75, 25);
+            this.btn_Browse.TabIndex = 15;
+            this.btn_Browse.Text = "Browse";
+            this.btn_Browse.Click += new System.EventHandler(this.btn_Browse_Click);
+            // 
             // Form8
             // 
+            this.AcceptButton = this.button2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_Cancel;
             this.ClientSize = new System.Drawing.Size(629, 450);
+            this.Controls.Add(this.btn_Browse);
+            this.Controls.Add(this.baseFilename);
+            this.Controls.Add(this.saveImageFolder);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
@@ -185,5 +239,10 @@ namespace Sample_CS
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox saveImageFolder;
+        private System.Windows.Forms.TextBox baseFilename;
+        private System.Windows.Forms.Button btn_Browse;
     }
 }

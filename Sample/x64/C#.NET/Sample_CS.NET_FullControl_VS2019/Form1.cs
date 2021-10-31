@@ -30,12 +30,12 @@ namespace Sample_CS
 		private bool m_SaveFlg = false;
 		private bool m_StopFlg = false;
 
-		private int  m_ViewScale = 100;
+		private int m_ViewScale = 100;
 
 		private ARTCAM_CAMERATYPE m_CurrentCameraType;
-		private int m_DllType  = -1;
+		private int m_DllType = -1;
 		private int m_DllCount = 0;
-		private int m_DllSata  = -1;
+		private int m_DllSata = -1;
 		private int m_SataType = -1;
 
 		private System.Windows.Forms.MenuItem menuFile;
@@ -81,17 +81,17 @@ namespace Sample_CS
 		private System.Windows.Forms.StatusBarPanel sbPanelExp;
 		private MenuItem menuItem6;
 		private MenuItem MenuUserCorrection;
-        private MenuItem menuAction;
-        private MenuItem menuSequence;
-        private MenuStrip menuStrip1;
-        private System.Windows.Forms.Timer timer1;
+		private MenuItem menuAction;
+		private MenuItem menuSequence;
+		private MenuStrip menuStrip1;
+		private System.Windows.Forms.Timer timer1;
 
 
 		[DllImport("user32.dll")]
-		public static extern IntPtr GetWindow (IntPtr hWnd, int uCmd);
+		public static extern IntPtr GetWindow(IntPtr hWnd, int uCmd);
 
 		[DllImport("user32.dll")]
-		public static extern int SetWindowPos (IntPtr hWnd, int hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
+		public static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
 
 
 		public Form1()
@@ -109,16 +109,16 @@ namespace Sample_CS
 		/// <summary>
 		/// Execute after-treatment to resource used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose(bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if (components != null) 
+				if (components != null)
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose(disposing);
 
 			Release();
 			m_CArtCam.FreeLibrary();
@@ -132,425 +132,425 @@ namespace Sample_CS
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
-            this.menuFile = new System.Windows.Forms.MenuItem();
-            this.menuSave = new System.Windows.Forms.MenuItem();
-            this.menuRec = new System.Windows.Forms.MenuItem();
-            this.menuExit = new System.Windows.Forms.MenuItem();
-            this.menuView = new System.Windows.Forms.MenuItem();
-            this.menuPreview = new System.Windows.Forms.MenuItem();
-            this.menuCallback = new System.Windows.Forms.MenuItem();
-            this.menuSnapshot = new System.Windows.Forms.MenuItem();
-            this.menuCapture = new System.Windows.Forms.MenuItem();
-            this.menuTrigger = new System.Windows.Forms.MenuItem();
-            this.menuItem5 = new System.Windows.Forms.MenuItem();
-            this.menuStop = new System.Windows.Forms.MenuItem();
-            this.menuSet = new System.Windows.Forms.MenuItem();
-            this.menuCamera = new System.Windows.Forms.MenuItem();
-            this.menuFilter = new System.Windows.Forms.MenuItem();
-            this.menuAnalog = new System.Windows.Forms.MenuItem();
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.MenuUserCorrection = new System.Windows.Forms.MenuItem();
-            this.menuDLL = new System.Windows.Forms.MenuItem();
-            this.menuDllReload = new System.Windows.Forms.MenuItem();
-            this.menuDevice = new System.Windows.Forms.MenuItem();
-            this.menuDevice0 = new System.Windows.Forms.MenuItem();
-            this.menuDevice1 = new System.Windows.Forms.MenuItem();
-            this.menuDevice2 = new System.Windows.Forms.MenuItem();
-            this.menuDevice3 = new System.Windows.Forms.MenuItem();
-            this.menuDevice4 = new System.Windows.Forms.MenuItem();
-            this.menuDevice5 = new System.Windows.Forms.MenuItem();
-            this.menuDevice6 = new System.Windows.Forms.MenuItem();
-            this.menuDevice7 = new System.Windows.Forms.MenuItem();
-            this.menuAction = new System.Windows.Forms.MenuItem();
-            this.menuSequence = new System.Windows.Forms.MenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.timerRec = new System.Windows.Forms.Timer(this.components);
-            this.statusBar1 = new System.Windows.Forms.StatusBar();
-            this.sbPanelSdkStatus = new System.Windows.Forms.StatusBarPanel();
-            this.sbPanelExp = new System.Windows.Forms.StatusBarPanel();
-            this.sbPanelFps = new System.Windows.Forms.StatusBarPanel();
-            this.sbPanelScale = new System.Windows.Forms.StatusBarPanel();
-            this.ImageBox = new System.Windows.Forms.PictureBox();
-            this.ImagePanel = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelSdkStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelExp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelFps)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelScale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
-            this.ImagePanel.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // mainMenu1
-            // 
-            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuFile,
-            this.menuView,
-            this.menuSet,
-            this.menuDLL,
-            this.menuDevice,
-            this.menuAction});
-            // 
-            // menuFile
-            // 
-            this.menuFile.Index = 0;
-            this.menuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuSave,
-            this.menuRec,
-            this.menuExit});
-            this.menuFile.Text = "File(&F)";
-            this.menuFile.Popup += new System.EventHandler(this.menuFile_Popup);
-            // 
-            // menuSave
-            // 
-            this.menuSave.Index = 0;
-            this.menuSave.Text = "Save(&S)";
-            this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
-            // 
-            // menuRec
-            // 
-            this.menuRec.Index = 1;
-            this.menuRec.Text = "Recording(&R)";
-            this.menuRec.Click += new System.EventHandler(this.menuRec_Click);
-            // 
-            // menuExit
-            // 
-            this.menuExit.Index = 2;
-            this.menuExit.Text = "End(&X)";
-            this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
-            // 
-            // menuView
-            // 
-            this.menuView.Index = 1;
-            this.menuView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuPreview,
-            this.menuCallback,
-            this.menuSnapshot,
-            this.menuCapture,
-            this.menuTrigger,
-            this.menuItem5,
-            this.menuStop});
-            this.menuView.Text = "Display(&V)";
-            this.menuView.Popup += new System.EventHandler(this.menuView_Popup);
-            // 
-            // menuPreview
-            // 
-            this.menuPreview.Index = 0;
-            this.menuPreview.Text = "Preview(&P)";
-            this.menuPreview.Click += new System.EventHandler(this.menuPreview_Click);
-            // 
-            // menuCallback
-            // 
-            this.menuCallback.Index = 1;
-            this.menuCallback.Text = "Callback(&B)";
-            this.menuCallback.Click += new System.EventHandler(this.menuCallback_Click);
-            // 
-            // menuSnapshot
-            // 
-            this.menuSnapshot.Index = 2;
-            this.menuSnapshot.Text = "Snapshot(&S)";
-            this.menuSnapshot.Click += new System.EventHandler(this.menuSnapshot_Click);
-            // 
-            // menuCapture
-            // 
-            this.menuCapture.Index = 3;
-            this.menuCapture.Text = "Capture(&C)";
-            this.menuCapture.Click += new System.EventHandler(this.menuCapture_Click);
-            // 
-            // menuTrigger
-            // 
-            this.menuTrigger.Index = 4;
-            this.menuTrigger.Text = "Trigger(&T)";
-            this.menuTrigger.Click += new System.EventHandler(this.menuTrigger_Click);
-            // 
-            // menuItem5
-            // 
-            this.menuItem5.Index = 5;
-            this.menuItem5.Text = "-";
-            // 
-            // menuStop
-            // 
-            this.menuStop.Index = 6;
-            this.menuStop.Text = "Pause";
-            this.menuStop.Click += new System.EventHandler(this.menuStop_Click);
-            // 
-            // menuSet
-            // 
-            this.menuSet.Index = 2;
-            this.menuSet.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuCamera,
-            this.menuFilter,
-            this.menuAnalog,
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem7,
-            this.menuItem6,
-            this.MenuUserCorrection});
-            this.menuSet.Text = "Settings(&S)";
-            this.menuSet.Click += new System.EventHandler(this.menuSet_Click);
-            this.menuSet.Popup += new System.EventHandler(this.menuSet_Popup);
-            // 
-            // menuCamera
-            // 
-            this.menuCamera.Index = 0;
-            this.menuCamera.Text = "Camera settings(&C)";
-            this.menuCamera.Click += new System.EventHandler(this.menuCamera_Click);
-            // 
-            // menuFilter
-            // 
-            this.menuFilter.Index = 1;
-            this.menuFilter.Text = "Filter settings(&F)";
-            this.menuFilter.Click += new System.EventHandler(this.menuFilter_Click);
-            // 
-            // menuAnalog
-            // 
-            this.menuAnalog.Index = 2;
-            this.menuAnalog.Text = "Analog settings(&A)";
-            this.menuAnalog.Click += new System.EventHandler(this.menuAnalog_Click);
-            // 
-            // menuItem1
-            // 
-            this.menuItem1.Index = 3;
-            this.menuItem1.Text = "-";
-            // 
-            // menuItem2
-            // 
-            this.menuItem2.Index = 4;
-            this.menuItem2.Text = "User size settings";
-            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
-            // 
-            // menuItem3
-            // 
-            this.menuItem3.Index = 5;
-            this.menuItem3.Text = "User filter settings";
-            this.menuItem3.Click += new System.EventHandler(this.menuItem3_Click);
-            // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 6;
-            this.menuItem4.Text = "User IO settings";
-            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
-            // 
-            // menuItem7
-            // 
-            this.menuItem7.Index = 7;
-            this.menuItem7.Text = "User monitor settings";
-            this.menuItem7.Click += new System.EventHandler(this.menuItem7_Click_1);
-            // 
-            // menuItem6
-            // 
-            this.menuItem6.Index = 8;
-            this.menuItem6.Text = "-";
-            // 
-            // MenuUserCorrection
-            // 
-            this.MenuUserCorrection.Index = 9;
-            this.MenuUserCorrection.Text = "Correction setting";
-            this.MenuUserCorrection.Click += new System.EventHandler(this.MenuUserCorrection_Click);
-            // 
-            // menuDLL
-            // 
-            this.menuDLL.Index = 3;
-            this.menuDLL.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuDllReload});
-            this.menuDLL.Text = "DLL(&L)";
-            // 
-            // menuDllReload
-            // 
-            this.menuDllReload.Index = 0;
-            this.menuDllReload.Text = "Reload";
-            this.menuDllReload.Click += new System.EventHandler(this.OnDllReload);
-            // 
-            // menuDevice
-            // 
-            this.menuDevice.Index = 4;
-            this.menuDevice.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuDevice0,
-            this.menuDevice1,
-            this.menuDevice2,
-            this.menuDevice3,
-            this.menuDevice4,
-            this.menuDevice5,
-            this.menuDevice6,
-            this.menuDevice7});
-            this.menuDevice.Text = "Device(&D)";
-            // 
-            // menuDevice0
-            // 
-            this.menuDevice0.Index = 0;
-            this.menuDevice0.Text = "0";
-            this.menuDevice0.Click += new System.EventHandler(this.menuDevice0_Click);
-            // 
-            // menuDevice1
-            // 
-            this.menuDevice1.Index = 1;
-            this.menuDevice1.Text = "1";
-            this.menuDevice1.Click += new System.EventHandler(this.menuDevice1_Click);
-            // 
-            // menuDevice2
-            // 
-            this.menuDevice2.Index = 2;
-            this.menuDevice2.Text = "2";
-            this.menuDevice2.Click += new System.EventHandler(this.menuDevice2_Click);
-            // 
-            // menuDevice3
-            // 
-            this.menuDevice3.Index = 3;
-            this.menuDevice3.Text = "3";
-            this.menuDevice3.Click += new System.EventHandler(this.menuDevice3_Click);
-            // 
-            // menuDevice4
-            // 
-            this.menuDevice4.Index = 4;
-            this.menuDevice4.Text = "4";
-            this.menuDevice4.Click += new System.EventHandler(this.menuDevice4_Click);
-            // 
-            // menuDevice5
-            // 
-            this.menuDevice5.Index = 5;
-            this.menuDevice5.Text = "5";
-            this.menuDevice5.Click += new System.EventHandler(this.menuDevice5_Click);
-            // 
-            // menuDevice6
-            // 
-            this.menuDevice6.Index = 6;
-            this.menuDevice6.Text = "6";
-            this.menuDevice6.Click += new System.EventHandler(this.menuDevice6_Click);
-            // 
-            // menuDevice7
-            // 
-            this.menuDevice7.Index = 7;
-            this.menuDevice7.Text = "7";
-            this.menuDevice7.Click += new System.EventHandler(this.menuDevice7_Click);
-            // 
-            // menuAction
-            // 
-            this.menuAction.Index = 5;
-            this.menuAction.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuSequence});
-            this.menuAction.Text = "Action(&A)";
-            // 
-            // menuSequence
-            // 
-            this.menuSequence.Index = 0;
-            this.menuSequence.Text = "Image sequence (&S)";
-            this.menuSequence.Click += new System.EventHandler(this.menuSequence_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.FileName = "doc1";
-            // 
-            // timerRec
-            // 
-            this.timerRec.Tick += new System.EventHandler(this.timerRec_Tick);
-            // 
-            // statusBar1
-            // 
-            this.statusBar1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusBar1.Location = new System.Drawing.Point(0, 494);
-            this.statusBar1.Name = "statusBar1";
-            this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
-            this.sbPanelSdkStatus,
-            this.sbPanelExp,
-            this.sbPanelFps,
-            this.sbPanelScale});
-            this.statusBar1.ShowPanels = true;
-            this.statusBar1.Size = new System.Drawing.Size(640, 17);
-            this.statusBar1.SizingGrip = false;
-            this.statusBar1.TabIndex = 0;
-            this.statusBar1.PanelClick += new System.Windows.Forms.StatusBarPanelClickEventHandler(this.statusBar1_PanelClick);
-            // 
-            // sbPanelSdkStatus
-            // 
-            this.sbPanelSdkStatus.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Spring;
-            this.sbPanelSdkStatus.Name = "sbPanelSdkStatus";
-            this.sbPanelSdkStatus.Text = "Not initialized";
-            this.sbPanelSdkStatus.Width = 300;
-            // 
-            // sbPanelExp
-            // 
-            this.sbPanelExp.Alignment = System.Windows.Forms.HorizontalAlignment.Right;
-            this.sbPanelExp.MinWidth = 100;
-            this.sbPanelExp.Name = "sbPanelExp";
-            this.sbPanelExp.Width = 120;
-            // 
-            // sbPanelFps
-            // 
-            this.sbPanelFps.Alignment = System.Windows.Forms.HorizontalAlignment.Right;
-            this.sbPanelFps.Name = "sbPanelFps";
-            this.sbPanelFps.Text = "0.0fps";
-            this.sbPanelFps.Width = 120;
-            // 
-            // sbPanelScale
-            // 
-            this.sbPanelScale.Name = "sbPanelScale";
-            this.sbPanelScale.Text = "100%";
-            // 
-            // ImageBox
-            // 
-            this.ImageBox.Location = new System.Drawing.Point(16, 17);
-            this.ImageBox.Name = "ImageBox";
-            this.ImageBox.Size = new System.Drawing.Size(40, 44);
-            this.ImageBox.TabIndex = 1;
-            this.ImageBox.TabStop = false;
-            this.ImageBox.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageBox_Paint);
-            // 
-            // ImagePanel
-            // 
-            this.ImagePanel.AutoScroll = true;
-            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ImagePanel.Controls.Add(this.ImageBox);
-            this.ImagePanel.Location = new System.Drawing.Point(48, 35);
-            this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(552, 433);
-            this.ImagePanel.TabIndex = 2;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(640, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // Form1
-            // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(640, 481);
-            this.Controls.Add(this.ImagePanel);
-            this.Controls.Add(this.statusBar1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Menu = this.mainMenu1;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "C# Sample";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelSdkStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelExp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelFps)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sbPanelScale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
-            this.ImagePanel.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.components = new System.ComponentModel.Container();
+			this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+			this.menuFile = new System.Windows.Forms.MenuItem();
+			this.menuSave = new System.Windows.Forms.MenuItem();
+			this.menuRec = new System.Windows.Forms.MenuItem();
+			this.menuExit = new System.Windows.Forms.MenuItem();
+			this.menuView = new System.Windows.Forms.MenuItem();
+			this.menuPreview = new System.Windows.Forms.MenuItem();
+			this.menuCallback = new System.Windows.Forms.MenuItem();
+			this.menuSnapshot = new System.Windows.Forms.MenuItem();
+			this.menuCapture = new System.Windows.Forms.MenuItem();
+			this.menuTrigger = new System.Windows.Forms.MenuItem();
+			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.menuStop = new System.Windows.Forms.MenuItem();
+			this.menuSet = new System.Windows.Forms.MenuItem();
+			this.menuCamera = new System.Windows.Forms.MenuItem();
+			this.menuFilter = new System.Windows.Forms.MenuItem();
+			this.menuAnalog = new System.Windows.Forms.MenuItem();
+			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.menuItem2 = new System.Windows.Forms.MenuItem();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem6 = new System.Windows.Forms.MenuItem();
+			this.MenuUserCorrection = new System.Windows.Forms.MenuItem();
+			this.menuDLL = new System.Windows.Forms.MenuItem();
+			this.menuDllReload = new System.Windows.Forms.MenuItem();
+			this.menuDevice = new System.Windows.Forms.MenuItem();
+			this.menuDevice0 = new System.Windows.Forms.MenuItem();
+			this.menuDevice1 = new System.Windows.Forms.MenuItem();
+			this.menuDevice2 = new System.Windows.Forms.MenuItem();
+			this.menuDevice3 = new System.Windows.Forms.MenuItem();
+			this.menuDevice4 = new System.Windows.Forms.MenuItem();
+			this.menuDevice5 = new System.Windows.Forms.MenuItem();
+			this.menuDevice6 = new System.Windows.Forms.MenuItem();
+			this.menuDevice7 = new System.Windows.Forms.MenuItem();
+			this.menuAction = new System.Windows.Forms.MenuItem();
+			this.menuSequence = new System.Windows.Forms.MenuItem();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.timerRec = new System.Windows.Forms.Timer(this.components);
+			this.statusBar1 = new System.Windows.Forms.StatusBar();
+			this.sbPanelSdkStatus = new System.Windows.Forms.StatusBarPanel();
+			this.sbPanelExp = new System.Windows.Forms.StatusBarPanel();
+			this.sbPanelFps = new System.Windows.Forms.StatusBarPanel();
+			this.sbPanelScale = new System.Windows.Forms.StatusBarPanel();
+			this.ImageBox = new System.Windows.Forms.PictureBox();
+			this.ImagePanel = new System.Windows.Forms.Panel();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelSdkStatus)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelExp)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelFps)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelScale)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
+			this.ImagePanel.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// mainMenu1
+			// 
+			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuFile,
+			this.menuView,
+			this.menuSet,
+			this.menuDLL,
+			this.menuDevice,
+			this.menuAction});
+			// 
+			// menuFile
+			// 
+			this.menuFile.Index = 0;
+			this.menuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuSave,
+			this.menuRec,
+			this.menuExit});
+			this.menuFile.Text = "File(&F)";
+			this.menuFile.Popup += new System.EventHandler(this.menuFile_Popup);
+			// 
+			// menuSave
+			// 
+			this.menuSave.Index = 0;
+			this.menuSave.Text = "Save(&S)";
+			this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
+			// 
+			// menuRec
+			// 
+			this.menuRec.Index = 1;
+			this.menuRec.Text = "Recording(&R)";
+			this.menuRec.Click += new System.EventHandler(this.menuRec_Click);
+			// 
+			// menuExit
+			// 
+			this.menuExit.Index = 2;
+			this.menuExit.Text = "End(&X)";
+			this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
+			// 
+			// menuView
+			// 
+			this.menuView.Index = 1;
+			this.menuView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuPreview,
+			this.menuCallback,
+			this.menuSnapshot,
+			this.menuCapture,
+			this.menuTrigger,
+			this.menuItem5,
+			this.menuStop});
+			this.menuView.Text = "Display(&V)";
+			this.menuView.Popup += new System.EventHandler(this.menuView_Popup);
+			// 
+			// menuPreview
+			// 
+			this.menuPreview.Index = 0;
+			this.menuPreview.Text = "Preview(&P)";
+			this.menuPreview.Click += new System.EventHandler(this.menuPreview_Click);
+			// 
+			// menuCallback
+			// 
+			this.menuCallback.Index = 1;
+			this.menuCallback.Text = "Callback(&B)";
+			this.menuCallback.Click += new System.EventHandler(this.menuCallback_Click);
+			// 
+			// menuSnapshot
+			// 
+			this.menuSnapshot.Index = 2;
+			this.menuSnapshot.Text = "Snapshot(&S)";
+			this.menuSnapshot.Click += new System.EventHandler(this.menuSnapshot_Click);
+			// 
+			// menuCapture
+			// 
+			this.menuCapture.Index = 3;
+			this.menuCapture.Text = "Capture(&C)";
+			this.menuCapture.Click += new System.EventHandler(this.menuCapture_Click);
+			// 
+			// menuTrigger
+			// 
+			this.menuTrigger.Index = 4;
+			this.menuTrigger.Text = "Trigger(&T)";
+			this.menuTrigger.Click += new System.EventHandler(this.menuTrigger_Click);
+			// 
+			// menuItem5
+			// 
+			this.menuItem5.Index = 5;
+			this.menuItem5.Text = "-";
+			// 
+			// menuStop
+			// 
+			this.menuStop.Index = 6;
+			this.menuStop.Text = "Pause";
+			this.menuStop.Click += new System.EventHandler(this.menuStop_Click);
+			// 
+			// menuSet
+			// 
+			this.menuSet.Index = 2;
+			this.menuSet.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuCamera,
+			this.menuFilter,
+			this.menuAnalog,
+			this.menuItem1,
+			this.menuItem2,
+			this.menuItem3,
+			this.menuItem4,
+			this.menuItem7,
+			this.menuItem6,
+			this.MenuUserCorrection});
+			this.menuSet.Text = "Settings(&S)";
+			this.menuSet.Click += new System.EventHandler(this.menuSet_Click);
+			this.menuSet.Popup += new System.EventHandler(this.menuSet_Popup);
+			// 
+			// menuCamera
+			// 
+			this.menuCamera.Index = 0;
+			this.menuCamera.Text = "Camera settings(&C)";
+			this.menuCamera.Click += new System.EventHandler(this.menuCamera_Click);
+			// 
+			// menuFilter
+			// 
+			this.menuFilter.Index = 1;
+			this.menuFilter.Text = "Filter settings(&F)";
+			this.menuFilter.Click += new System.EventHandler(this.menuFilter_Click);
+			// 
+			// menuAnalog
+			// 
+			this.menuAnalog.Index = 2;
+			this.menuAnalog.Text = "Analog settings(&A)";
+			this.menuAnalog.Click += new System.EventHandler(this.menuAnalog_Click);
+			// 
+			// menuItem1
+			// 
+			this.menuItem1.Index = 3;
+			this.menuItem1.Text = "-";
+			// 
+			// menuItem2
+			// 
+			this.menuItem2.Index = 4;
+			this.menuItem2.Text = "User size settings";
+			this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
+			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 5;
+			this.menuItem3.Text = "User filter settings";
+			this.menuItem3.Click += new System.EventHandler(this.menuItem3_Click);
+			// 
+			// menuItem4
+			// 
+			this.menuItem4.Index = 6;
+			this.menuItem4.Text = "User IO settings";
+			this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 7;
+			this.menuItem7.Text = "User monitor settings";
+			this.menuItem7.Click += new System.EventHandler(this.menuItem7_Click_1);
+			// 
+			// menuItem6
+			// 
+			this.menuItem6.Index = 8;
+			this.menuItem6.Text = "-";
+			// 
+			// MenuUserCorrection
+			// 
+			this.MenuUserCorrection.Index = 9;
+			this.MenuUserCorrection.Text = "Correction setting";
+			this.MenuUserCorrection.Click += new System.EventHandler(this.MenuUserCorrection_Click);
+			// 
+			// menuDLL
+			// 
+			this.menuDLL.Index = 3;
+			this.menuDLL.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuDllReload});
+			this.menuDLL.Text = "DLL(&L)";
+			// 
+			// menuDllReload
+			// 
+			this.menuDllReload.Index = 0;
+			this.menuDllReload.Text = "Reload";
+			this.menuDllReload.Click += new System.EventHandler(this.OnDllReload);
+			// 
+			// menuDevice
+			// 
+			this.menuDevice.Index = 4;
+			this.menuDevice.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuDevice0,
+			this.menuDevice1,
+			this.menuDevice2,
+			this.menuDevice3,
+			this.menuDevice4,
+			this.menuDevice5,
+			this.menuDevice6,
+			this.menuDevice7});
+			this.menuDevice.Text = "Device(&D)";
+			// 
+			// menuDevice0
+			// 
+			this.menuDevice0.Index = 0;
+			this.menuDevice0.Text = "0";
+			this.menuDevice0.Click += new System.EventHandler(this.menuDevice0_Click);
+			// 
+			// menuDevice1
+			// 
+			this.menuDevice1.Index = 1;
+			this.menuDevice1.Text = "1";
+			this.menuDevice1.Click += new System.EventHandler(this.menuDevice1_Click);
+			// 
+			// menuDevice2
+			// 
+			this.menuDevice2.Index = 2;
+			this.menuDevice2.Text = "2";
+			this.menuDevice2.Click += new System.EventHandler(this.menuDevice2_Click);
+			// 
+			// menuDevice3
+			// 
+			this.menuDevice3.Index = 3;
+			this.menuDevice3.Text = "3";
+			this.menuDevice3.Click += new System.EventHandler(this.menuDevice3_Click);
+			// 
+			// menuDevice4
+			// 
+			this.menuDevice4.Index = 4;
+			this.menuDevice4.Text = "4";
+			this.menuDevice4.Click += new System.EventHandler(this.menuDevice4_Click);
+			// 
+			// menuDevice5
+			// 
+			this.menuDevice5.Index = 5;
+			this.menuDevice5.Text = "5";
+			this.menuDevice5.Click += new System.EventHandler(this.menuDevice5_Click);
+			// 
+			// menuDevice6
+			// 
+			this.menuDevice6.Index = 6;
+			this.menuDevice6.Text = "6";
+			this.menuDevice6.Click += new System.EventHandler(this.menuDevice6_Click);
+			// 
+			// menuDevice7
+			// 
+			this.menuDevice7.Index = 7;
+			this.menuDevice7.Text = "7";
+			this.menuDevice7.Click += new System.EventHandler(this.menuDevice7_Click);
+			// 
+			// menuAction
+			// 
+			this.menuAction.Index = 5;
+			this.menuAction.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.menuSequence});
+			this.menuAction.Text = "Action(&A)";
+			// 
+			// menuSequence
+			// 
+			this.menuSequence.Index = 0;
+			this.menuSequence.Text = "Image sequence (&S)";
+			this.menuSequence.Click += new System.EventHandler(this.menuSequence_Click);
+			// 
+			// timer1
+			// 
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// saveFileDialog1
+			// 
+			this.saveFileDialog1.FileName = "doc1";
+			// 
+			// timerRec
+			// 
+			this.timerRec.Tick += new System.EventHandler(this.timerRec_Tick);
+			// 
+			// statusBar1
+			// 
+			this.statusBar1.Dock = System.Windows.Forms.DockStyle.None;
+			this.statusBar1.Location = new System.Drawing.Point(0, 494);
+			this.statusBar1.Name = "statusBar1";
+			this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
+			this.sbPanelSdkStatus,
+			this.sbPanelExp,
+			this.sbPanelFps,
+			this.sbPanelScale});
+			this.statusBar1.ShowPanels = true;
+			this.statusBar1.Size = new System.Drawing.Size(640, 17);
+			this.statusBar1.SizingGrip = false;
+			this.statusBar1.TabIndex = 0;
+			this.statusBar1.PanelClick += new System.Windows.Forms.StatusBarPanelClickEventHandler(this.statusBar1_PanelClick);
+			// 
+			// sbPanelSdkStatus
+			// 
+			this.sbPanelSdkStatus.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Spring;
+			this.sbPanelSdkStatus.Name = "sbPanelSdkStatus";
+			this.sbPanelSdkStatus.Text = "Not initialized";
+			this.sbPanelSdkStatus.Width = 300;
+			// 
+			// sbPanelExp
+			// 
+			this.sbPanelExp.Alignment = System.Windows.Forms.HorizontalAlignment.Right;
+			this.sbPanelExp.MinWidth = 100;
+			this.sbPanelExp.Name = "sbPanelExp";
+			this.sbPanelExp.Width = 120;
+			// 
+			// sbPanelFps
+			// 
+			this.sbPanelFps.Alignment = System.Windows.Forms.HorizontalAlignment.Right;
+			this.sbPanelFps.Name = "sbPanelFps";
+			this.sbPanelFps.Text = "0.0fps";
+			this.sbPanelFps.Width = 120;
+			// 
+			// sbPanelScale
+			// 
+			this.sbPanelScale.Name = "sbPanelScale";
+			this.sbPanelScale.Text = "100%";
+			// 
+			// ImageBox
+			// 
+			this.ImageBox.Location = new System.Drawing.Point(16, 17);
+			this.ImageBox.Name = "ImageBox";
+			this.ImageBox.Size = new System.Drawing.Size(40, 44);
+			this.ImageBox.TabIndex = 1;
+			this.ImageBox.TabStop = false;
+			this.ImageBox.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageBox_Paint);
+			// 
+			// ImagePanel
+			// 
+			this.ImagePanel.AutoScroll = true;
+			this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
+			this.ImagePanel.Controls.Add(this.ImageBox);
+			this.ImagePanel.Location = new System.Drawing.Point(48, 35);
+			this.ImagePanel.Name = "ImagePanel";
+			this.ImagePanel.Size = new System.Drawing.Size(552, 433);
+			this.ImagePanel.TabIndex = 2;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(640, 24);
+			this.menuStrip1.TabIndex = 3;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// Form1
+			// 
+			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.ClientSize = new System.Drawing.Size(640, 481);
+			this.Controls.Add(this.ImagePanel);
+			this.Controls.Add(this.statusBar1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
+			this.Menu = this.mainMenu1;
+			this.Name = "Form1";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+			this.Text = "C# Sample";
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
+			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Resize += new System.EventHandler(this.Form1_Resize);
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelSdkStatus)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelExp)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelFps)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.sbPanelScale)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
+			this.ImagePanel.ResumeLayout(false);
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 		#endregion
@@ -559,7 +559,7 @@ namespace Sample_CS
 		/// Main entry point for application.
 		/// </summary>
 		[STAThread]
-		static void Main() 
+		static void Main()
 		{
 			Application.Run(new Form1());
 		}
@@ -567,40 +567,40 @@ namespace Sample_CS
 		protected override unsafe void WndProc(ref Message m)
 		{
 			// WM_GRAPHNOTIFY
-			if(DLL_MESSAGE.WM_GRAPHNOTIFY == (DLL_MESSAGE)m.Msg)
+			if (DLL_MESSAGE.WM_GRAPHNOTIFY == (DLL_MESSAGE)m.Msg)
 			{
 			}
-				// WM_ERROR
-			else if(DLL_MESSAGE.WM_ERROR == (DLL_MESSAGE)m.Msg)
+			// WM_ERROR
+			else if (DLL_MESSAGE.WM_ERROR == (DLL_MESSAGE)m.Msg)
 			{
 				int error = (int)m.LParam;
-				switch((ARTCAMSDK_ERROR)error){
-					case ARTCAMSDK_ERROR.ARTCAMSDK_NOERROR :		sbPanelSdkStatus.Text = "Normal";															break;	
-					case ARTCAMSDK_ERROR.ARTCAMSDK_NOT_INITIALIZE:	sbPanelSdkStatus.Text = "Not initialized";													break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_DISABLEDDEVICE:	sbPanelSdkStatus.Text = "Access to unavailable device was attempted";						break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CREATETHREAD:	sbPanelSdkStatus.Text = "Failure of thread creation for capturing";							break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CREATEWINDOW:	sbPanelSdkStatus.Text = "Window creation failed";											break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_OUTOFMEMORY:		sbPanelSdkStatus.Text = "Not enough memory for image transfer/Failure for securing memory";	break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CAMERASET:		sbPanelSdkStatus.Text = "Error for camera (device) settings";								break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CAMERASIZE:		sbPanelSdkStatus.Text = "Error for camera (device) size settings;";							break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CAPTURE:			sbPanelSdkStatus.Text = "Capturing failed";													break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_PARAM:			sbPanelSdkStatus.Text = "Wrong argument";													break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_DIRECTSHOW:		sbPanelSdkStatus.Text = "Directshow initialization error";									break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_UNSUPPORTED:		sbPanelSdkStatus.Text = "Not supported";													break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_UNKNOWN:			sbPanelSdkStatus.Text = "Unknow error";														break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_CAPTURELOST:		sbPanelSdkStatus.Text = "Device lost";														break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_FILENOTFOUND:	sbPanelSdkStatus.Text = "File not found";													break;
-					case ARTCAMSDK_ERROR.ARTCAMSDK_FPGASET:			sbPanelSdkStatus.Text = "FPGA settings error";												break;
-					default:										sbPanelSdkStatus.Text = "";															break;
+				switch ((ARTCAMSDK_ERROR)error) {
+					case ARTCAMSDK_ERROR.ARTCAMSDK_NOERROR: sbPanelSdkStatus.Text = "Normal"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_NOT_INITIALIZE: sbPanelSdkStatus.Text = "Not initialized"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_DISABLEDDEVICE: sbPanelSdkStatus.Text = "Access to unavailable device was attempted"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CREATETHREAD: sbPanelSdkStatus.Text = "Failure of thread creation for capturing"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CREATEWINDOW: sbPanelSdkStatus.Text = "Window creation failed"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_OUTOFMEMORY: sbPanelSdkStatus.Text = "Not enough memory for image transfer/Failure for securing memory"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CAMERASET: sbPanelSdkStatus.Text = "Error for camera (device) settings"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CAMERASIZE: sbPanelSdkStatus.Text = "Error for camera (device) size settings;"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CAPTURE: sbPanelSdkStatus.Text = "Capturing failed"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_PARAM: sbPanelSdkStatus.Text = "Wrong argument"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_DIRECTSHOW: sbPanelSdkStatus.Text = "Directshow initialization error"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_UNSUPPORTED: sbPanelSdkStatus.Text = "Not supported"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_UNKNOWN: sbPanelSdkStatus.Text = "Unknow error"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_CAPTURELOST: sbPanelSdkStatus.Text = "Device lost"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_FILENOTFOUND: sbPanelSdkStatus.Text = "File not found"; break;
+					case ARTCAMSDK_ERROR.ARTCAMSDK_FPGASET: sbPanelSdkStatus.Text = "FPGA settings error"; break;
+					default: sbPanelSdkStatus.Text = ""; break;
 				}
 			}
-				// WM_GRAPHPAINT
-			else if(DLL_MESSAGE.WM_GRAPHPAINT == (DLL_MESSAGE)m.Msg)
+			// WM_GRAPHPAINT
+			else if (DLL_MESSAGE.WM_GRAPHPAINT == (DLL_MESSAGE)m.Msg)
 			{
 				GP_INFO* pInfo = (GP_INFO*)m.WParam;
-				if(pInfo != null)
+				if (pInfo != null)
 				{
-				m_SaveFlg = true;
+					m_SaveFlg = true;
 					ImageBox.Invalidate();
 					float fps = ((float)pInfo->lFps / 10.0f);
 					sbPanelFps.Text = fps.ToString("F1") + "fps";
@@ -618,32 +618,32 @@ namespace Sample_CS
 			// Drawing by double buffer(not to flicker)
 			this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
-			if(File.Exists("Sample.xml"))
-				{
+			if (File.Exists("Sample.xml"))
+			{
 				System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(int[]));
 				System.IO.FileStream fs = new System.IO.FileStream("Sample.xml", System.IO.FileMode.Open);
 				int[] Type = new int[2];
 				Type = (int[])ser.Deserialize(fs);
 				fs.Close();
 				m_DllType = Type[0];
-				m_SataType= Type[1];
+				m_SataType = Type[1];
 			}
 			OnDllReload(sender, e);
-			if( -1 != m_DllType){
+			if (-1 != m_DllType) {
 				OnDllChange((object)0, System.EventArgs.Empty, m_DllType, m_SataType);
-				}
 			}
+		}
 
 		private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			if(m_DllType != -1)
+			if (m_DllType != -1)
 			{
-				int[] Type = {(int)m_DllType, (int)m_SataType};
+				int[] Type = { (int)m_DllType, (int)m_SataType };
 				System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(int[]));
 				System.IO.FileStream fs = new System.IO.FileStream("Sample.xml", System.IO.FileMode.Create);
 				ser.Serialize(fs, Type);
 				fs.Close();
-		}
+			}
 
 			Release();
 		}
@@ -652,12 +652,12 @@ namespace Sample_CS
 		{
 			m_CArtCam.Release();
 
-			if(m_Bitmap != null)
+			if (m_Bitmap != null)
 			{
 				m_Bitmap.Dispose();
 				m_Bitmap = null;
 			}
-			
+
 			m_PreviewMode = -1;
 			timer1.Enabled = false;
 			timerRec.Enabled = false;
@@ -669,21 +669,21 @@ namespace Sample_CS
 		// Save
 		private void menuSave_Click(object sender, System.EventArgs e)
 		{
-	       saveFileDialog1.Filter = "BITMAPFile(*.bmp)|*.bmp|JPEGFile(*.jpg)|*.jpg*.jpeg|TIFFFile(*.tif)|*.tif*.tiff|PNGFile(*.png)|*.png|RAWFile(*.raw)|*.raw||"  ;
+			saveFileDialog1.Filter = "BITMAPFile(*.bmp)|*.bmp|JPEGFile(*.jpg)|*.jpg*.jpeg|TIFFFile(*.tif)|*.tif*.tiff|PNGFile(*.png)|*.png|RAWFile(*.raw)|*.raw||";
 
-			if(DialogResult.OK == saveFileDialog1.ShowDialog())
+			if (DialogResult.OK == saveFileDialog1.ShowDialog())
 			{
 				// Set extension yourself
 				FileInfo fileInfo = new FileInfo(saveFileDialog1.FileName);
 
 				string str = fileInfo.FullName.Remove(fileInfo.FullName.Length - fileInfo.Extension.Length, fileInfo.Extension.Length);
-				switch(saveFileDialog1.FilterIndex)
+				switch (saveFileDialog1.FilterIndex)
 				{
-					case 1:	str += ".bmp";	m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_BITMAP);		break;
-					case 2:	str += ".jpg";	m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_JPEG_HIGH);	break;
-					case 3:	str += ".tif";	m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_TIFF);		break;
-					case 4:	str += ".png";	m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_PNG);		break;
-					case 5:	str += ".raw";	m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_RAW);		break;
+					case 1: str += ".bmp"; m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_BITMAP); break;
+					case 2: str += ".jpg"; m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_JPEG_HIGH); break;
+					case 3: str += ".tif"; m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_TIFF); break;
+					case 4: str += ".png"; m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_PNG); break;
+					case 5: str += ".raw"; m_CArtCam.SaveImage(str, FILETYPE.FILETYPE_RAW); break;
 				}
 			}
 		}
@@ -694,7 +694,7 @@ namespace Sample_CS
 			saveFileDialog1.Filter = "AVIFile(*.avi)|*.avi||";
 			saveFileDialog1.DefaultExt = "avi";
 
-			if(DialogResult.OK == saveFileDialog1.ShowDialog())
+			if (DialogResult.OK == saveFileDialog1.ShowDialog())
 			{
 				m_RecName = saveFileDialog1.FileName;
 
@@ -722,10 +722,10 @@ namespace Sample_CS
 			timerRec.Enabled = false;
 			m_CArtCam.Close();
 
-			if(DialogResult.Yes == MessageBox.Show("Recording complete. /n Play file?", "Complete", MessageBoxButtons.YesNo))
+			if (DialogResult.Yes == MessageBox.Show("Recording complete. /n Play file?", "Complete", MessageBoxButtons.YesNo))
 			{
 				System.Diagnostics.Process.Start(m_RecName);
-			}			
+			}
 		}
 
 		// End
@@ -737,7 +737,7 @@ namespace Sample_CS
 		// Preview Draw automatically
 		private void menuPreview_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -756,10 +756,10 @@ namespace Sample_CS
 			m_CArtCam.Preview();
 
 			// Check menu
-			menuPreview.Checked  = true;
+			menuPreview.Checked = true;
 			menuCallback.Checked = false;
-			menuCapture.Checked  = false;
-			menuTrigger.Checked  = false;
+			menuCapture.Checked = false;
+			menuTrigger.Checked = false;
 
 			m_PreviewMode = 0;
 			m_SaveFlg = true;
@@ -772,7 +772,7 @@ namespace Sample_CS
 		// Callback: Obtain image pointer of image and draw its own.
 		private void menuCallback_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -797,10 +797,10 @@ namespace Sample_CS
 			m_CArtCam.CallBackPreview(Handle, m_pCapture, getSize(), 1);
 
 			// Check menu
-			menuPreview.Checked  = false;
+			menuPreview.Checked = false;
 			menuCallback.Checked = true;
-			menuCapture.Checked  = false;
-			menuTrigger.Checked  = false;
+			menuCapture.Checked = false;
+			menuTrigger.Checked = false;
 
 			m_PreviewMode = 1;
 			m_StopFlg = false;
@@ -812,7 +812,7 @@ namespace Sample_CS
 		// Snapshot
 		private void menuSnapshot_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -834,10 +834,10 @@ namespace Sample_CS
 
 
 			// Check menu
-			menuPreview.Checked  = false;
+			menuPreview.Checked = false;
 			menuCallback.Checked = false;
-			menuCapture.Checked  = false;
-			menuTrigger.Checked  = false;
+			menuCapture.Checked = false;
+			menuTrigger.Checked = false;
 
 			m_PreviewMode = 2;
 			m_SaveFlg = true;
@@ -853,7 +853,7 @@ namespace Sample_CS
 		// Capture
 		private void menuCapture_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -874,10 +874,10 @@ namespace Sample_CS
 			m_CArtCam.Capture();
 
 			// Check menu
-			menuPreview.Checked  = false;
+			menuPreview.Checked = false;
 			menuCallback.Checked = false;
-			menuCapture.Checked  = true;
-			menuTrigger.Checked  = false;
+			menuCapture.Checked = true;
+			menuTrigger.Checked = false;
 
 			m_PreviewMode = 3;
 			m_StopFlg = false;
@@ -892,10 +892,10 @@ namespace Sample_CS
 		// Capture timer
 		private void timer1_Tick(object sender, System.EventArgs e)
 		{
-			if(m_PreviewMode == 3)
+			if (m_PreviewMode == 3)
 			{
-			m_CArtCam.SnapShot(m_pCapture, getSize(), 1);
-			m_SaveFlg = true;
+				m_CArtCam.SnapShot(m_pCapture, getSize(), 1);
+				m_SaveFlg = true;
 			}
 			ImageBox.Invalidate();
 		}
@@ -903,7 +903,7 @@ namespace Sample_CS
 		// Trigger
 		private void menuTrigger_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -928,10 +928,10 @@ namespace Sample_CS
 			m_CArtCam.Trigger(this.Handle, m_pCapture, getSize(), 1);
 
 			// Check menu
-			menuPreview.Checked  = false;
+			menuPreview.Checked = false;
 			menuCallback.Checked = false;
-			menuCapture.Checked  = false;
-			menuTrigger.Checked  = true;
+			menuCapture.Checked = false;
+			menuTrigger.Checked = true;
 
 			m_PreviewMode = 4;
 			m_StopFlg = false;
@@ -944,16 +944,16 @@ namespace Sample_CS
 		private void menuStop_Click(object sender, System.EventArgs e)
 		{
 			// Stop only for animated picture
-			if(0 == m_PreviewMode || 1 == m_PreviewMode)
+			if (0 == m_PreviewMode || 1 == m_PreviewMode)
 			{
-				if(m_StopFlg)
+				if (m_StopFlg)
 				{
 					m_CArtCam.StartPreview();
 					m_StopFlg = false;
 
 					menuStop.Text = "Pause";
 				}
-				else 
+				else
 				{
 					m_CArtCam.StopPreview();
 					m_StopFlg = true;
@@ -967,12 +967,12 @@ namespace Sample_CS
 		private void CreateBitmap()
 		{
 			// In case bitmap is already created, release.
-			if(null != m_Bitmap)
+			if (null != m_Bitmap)
 			{
 				m_Bitmap.Dispose();
 			}
 
-			switch(getColorMode())
+			switch (getColorMode())
 			{
 				case 8:
 				case 16:
@@ -982,7 +982,7 @@ namespace Sample_CS
 					ColorPalette pal = m_Bitmap.Palette;
 					Color[] cpe = m_Bitmap.Palette.Entries;
 
-					for(int i=0; i<256; i++)
+					for (int i = 0; i < 256; i++)
 					{
 						cpe.SetValue(Color.FromArgb(i, i, i), i);
 						pal.Entries[i] = cpe[i];
@@ -990,10 +990,10 @@ namespace Sample_CS
 					m_Bitmap.Palette = pal;
 					break;
 
-				case 24:	m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb);			break;
-				case 32:	m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb);			break;
-				case 48:	m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb);			break;
-				case 64:	m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb);			break;
+				case 24: m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb); break;
+				case 32: m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb); break;
+				case 48: m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb); break;
+				case 64: m_Bitmap = new Bitmap(getWidth(), getHeight(), PixelFormat.Format24bppRgb); break;
 			}
 
 			// Arrangement for capture
@@ -1004,15 +1004,15 @@ namespace Sample_CS
 		// Camera settings
 		private void menuCamera_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
 			}
 
-			if(0 != m_CArtCam.SetCameraDlg(this.Handle))
+			if (0 != m_CArtCam.SetCameraDlg(this.Handle))
 			{
-				switch(m_PreviewMode)
+				switch (m_PreviewMode)
 				{
 					case 0: menuPreview_Click(sender, e); break;
 					case 1: menuCallback_Click(sender, e); break;
@@ -1025,7 +1025,7 @@ namespace Sample_CS
 		// Filter settings
 		private void menuFilter_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -1037,7 +1037,7 @@ namespace Sample_CS
 		// Analog settings
 		private void menuAnalog_Click(object sender, System.EventArgs e)
 		{
-			if(!m_CArtCam.IsInit())
+			if (!m_CArtCam.IsInit())
 			{
 				MessageBox.Show("Select available device");
 				return;
@@ -1048,25 +1048,25 @@ namespace Sample_CS
 
 		private void OnDllReload(object sender, System.EventArgs e)
 		{
-			for (int i=0; i<m_DllCount; i++){
+			for (int i = 0; i < m_DllCount; i++) {
 				menuDLL.MenuItems.RemoveAt(1);
 			}
 			m_DllCount = 0;
-			m_DllSata  = -1;
+			m_DllSata = -1;
 
 			String szDirPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 			String[] files = Directory.GetFiles(szDirPath, "Art*.dll");
 			foreach (String szFileName in files)
 			{
 				CArtCam ArtCam = new CArtCam();
-				if (ArtCam.LoadLibrary(szFileName)){
+				if (ArtCam.LoadLibrary(szFileName)) {
 
 					long ver = ArtCam.GetDllVersion() & 0xFFFF;
 					String szMenu = String.Format("{0}\tVersion {1:D4}", Path.GetFileNameWithoutExtension(szFileName), ver);
 
 					m_DllCount++;
-					if(ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_SATA == (ARTCAM_CAMERATYPE)(ArtCam.GetDllVersion() >> 16)){
-						
+					if (ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_SATA == (ARTCAM_CAMERATYPE)(ArtCam.GetDllVersion() >> 16)) {
+
 						MenuItem menuSata = new MenuItem();
 						menuSata.Text = szMenu;
 						String[] CameraName = {
@@ -1083,15 +1083,15 @@ namespace Sample_CS
 											"130MI",
 											"200MI",
 										};
-						for(int i=0; i<CameraName.Length; i++){
+						for (int i = 0; i < CameraName.Length; i++) {
 							MenuItem mi = new MenuItem();
 							mi.Text = CameraName[i];
 							mi.Click += new System.EventHandler(OnMenuDLLSelect);
 							menuSata.MenuItems.Add(i, mi);
 						}
 						menuDLL.MenuItems.Add(m_DllCount, menuSata);
-						m_DllSata = m_DllCount-1;
-					}else{
+						m_DllSata = m_DllCount - 1;
+					} else {
 						MenuItem mi = new MenuItem();
 						mi.Text = szMenu;
 						mi.Click += new System.EventHandler(OnMenuDLLSelect);
@@ -1104,18 +1104,18 @@ namespace Sample_CS
 		private void OnMenuDLLSelect(object sender, System.EventArgs e)
 		{
 			int id = menuDLL.MenuItems.IndexOf((MenuItem)sender);
-			if (id > -1){
-				OnDllChange(sender, e, id-1, -1);
-			}else{
+			if (id > -1) {
+				OnDllChange(sender, e, id - 1, -1);
+			} else {
 				int type = ((MenuItem)sender).Index;
-				if((int)ARTCAM_CAMERATYPE_SATA.ARTCAM_CAMERATYPE_SATA_LVDS <= type && type <= (int)ARTCAM_CAMERATYPE_SATA.ARTCAM_CAMERATYPE_SATA_200MI){
+				if ((int)ARTCAM_CAMERATYPE_SATA.ARTCAM_CAMERATYPE_SATA_LVDS <= type && type <= (int)ARTCAM_CAMERATYPE_SATA.ARTCAM_CAMERATYPE_SATA_200MI) {
 					OnDllChange(sender, e, m_DllSata, type);
 				}
 			}
 		}
 		private void DeviceChange(object sender, System.EventArgs e, int Number)
 		{
-			if(m_CArtCam.IsInit())
+			if (m_CArtCam.IsInit())
 			{
 				m_CArtCam.Close();
 			}
@@ -1123,8 +1123,8 @@ namespace Sample_CS
 			// To confirm whether the device is connected, use "GetDeviceName"
 			// It can be found out easily with "GetDeviceName".
 			// When area for obtain name is not secured, it results in error. Prepare alignment length of at least 32.
-			StringBuilder Temp = new StringBuilder( 256 );
-			if(0 == m_CArtCam.GetDeviceName(Number, Temp, 256))
+			StringBuilder Temp = new StringBuilder(256);
+			if (0 == m_CArtCam.GetDeviceName(Number, Temp, 256))
 			{
 				m_PreviewMode = -1;
 				m_SelectDevice = -1;
@@ -1141,32 +1141,32 @@ namespace Sample_CS
 			m_CArtCam.SetDeviceNumber(Number);
 
 
-			for(int i=0; i<8; i++)
+			for (int i = 0; i < 8; i++)
 			{
 				menuDevice.MenuItems[i].Checked = false;
 			}
 			menuDevice.MenuItems[Number].Checked = true;
 
 
-			switch(m_PreviewMode)
+			switch (m_PreviewMode)
 			{
-				case 0:	menuPreview_Click(sender, e); break;
-				case 1:	menuCallback_Click(sender, e); break;
-				case 3:	menuCapture_Click(sender, e); break;
-				case 4:	menuTrigger_Click(sender, e); break;
+				case 0: menuPreview_Click(sender, e); break;
+				case 1: menuCallback_Click(sender, e); break;
+				case 3: menuCapture_Click(sender, e); break;
+				case 4: menuTrigger_Click(sender, e); break;
 			}
 		}
 
-		private void menuDevice0_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 0); }
-		private void menuDevice1_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 1); }
-		private void menuDevice2_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 2); }
-		private void menuDevice3_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 3); }
-		private void menuDevice4_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 4); }
-		private void menuDevice5_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 5); }
-		private void menuDevice6_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 6); }
-		private void menuDevice7_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 7); }
-		private void menuDevice8_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 8); }
-		private void menuDevice9_Click(object sender, System.EventArgs e){ DeviceChange(sender, e, 9); }
+		private void menuDevice0_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 0); }
+		private void menuDevice1_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 1); }
+		private void menuDevice2_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 2); }
+		private void menuDevice3_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 3); }
+		private void menuDevice4_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 4); }
+		private void menuDevice5_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 5); }
+		private void menuDevice6_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 6); }
+		private void menuDevice7_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 7); }
+		private void menuDevice8_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 8); }
+		private void menuDevice9_Click(object sender, System.EventArgs e) { DeviceChange(sender, e, 9); }
 
 		private int getSize()
 		{
@@ -1197,17 +1197,17 @@ namespace Sample_CS
 
 		private BitmapData LockBitmap()
 		{
-			switch(getColorMode())
+			switch (getColorMode())
 			{
 				case 8:
 				case 16:
-					return m_Bitmap.LockBits(new Rectangle(0,0,getWidth(),getHeight()), ImageLockMode.ReadWrite, PixelFormat.Format8bppIndexed);
+					return m_Bitmap.LockBits(new Rectangle(0, 0, getWidth(), getHeight()), ImageLockMode.ReadWrite, PixelFormat.Format8bppIndexed);
 
 				case 24:
 				case 32:
 				case 48:
 				case 64:
-					return m_Bitmap.LockBits(new Rectangle(0,0,getWidth(),getHeight()), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+					return m_Bitmap.LockBits(new Rectangle(0, 0, getWidth(), getHeight()), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 			}
 
 			return null;
@@ -1215,16 +1215,16 @@ namespace Sample_CS
 
 		private void DrawImage(Graphics g)
 		{
-			if(null == m_Bitmap)
+			if (null == m_Bitmap)
 			{
-				return ;
+				return;
 			}
 
 
 			BitmapData pBitmapData = LockBitmap();
-			if(null == pBitmapData)
+			if (null == pBitmapData)
 			{
-				return ;
+				return;
 			}
 
 
@@ -1233,64 +1233,64 @@ namespace Sample_CS
 				byte* pdest = (byte*)pBitmapData.Scan0.ToPointer();
 
 				// In case of 16 bit transfer,convert to 8 bit and display
-				if(getColorMode() == 16)
+				if (getColorMode() == 16)
 				{
 					int size = getWidth() * getHeight();
-					switch(m_CArtCam.GetColorMode())
+					switch (m_CArtCam.GetColorMode())
 					{
-						case 10: for(int i=0; i<size; i++) pdest[i] = (byte)((m_pCapture[i*2+1] << 6) | (m_pCapture[i*2] >> 2));	break;
-						case 12: for(int i=0; i<size; i++) pdest[i] = (byte)((m_pCapture[i*2+1] << 4) | (m_pCapture[i*2] >> 4));	break;
-						case 14: for(int i=0; i<size; i++) pdest[i] = (byte)((m_pCapture[i*2+1] << 2) | (m_pCapture[i*2] >> 6));	break;
-						case 16: for(int i=0; i<size; i++) pdest[i] = (byte)((m_pCapture[i*2+1] << 0) | (m_pCapture[i*2] >> 8));	break;
+						case 10: for (int i = 0; i < size; i++) pdest[i] = (byte)((m_pCapture[i * 2 + 1] << 6) | (m_pCapture[i * 2] >> 2)); break;
+						case 12: for (int i = 0; i < size; i++) pdest[i] = (byte)((m_pCapture[i * 2 + 1] << 4) | (m_pCapture[i * 2] >> 4)); break;
+						case 14: for (int i = 0; i < size; i++) pdest[i] = (byte)((m_pCapture[i * 2 + 1] << 2) | (m_pCapture[i * 2] >> 6)); break;
+						case 16: for (int i = 0; i < size; i++) pdest[i] = (byte)((m_pCapture[i * 2 + 1] << 0) | (m_pCapture[i * 2] >> 8)); break;
 					}
 				}
-				else if(getColorMode() == 32)
+				else if (getColorMode() == 32)
 				{
 					int size = getWidth() * getHeight();
-					for(int i=0; i<size; i++)
+					for (int i = 0; i < size; i++)
 					{
-						pdest[i*3]   = m_pCapture[i*4];
-						pdest[i*3+1] = m_pCapture[i*4+1];
-						pdest[i*3+2] = m_pCapture[i*4+2];
+						pdest[i * 3] = m_pCapture[i * 4];
+						pdest[i * 3 + 1] = m_pCapture[i * 4 + 1];
+						pdest[i * 3 + 2] = m_pCapture[i * 4 + 2];
 					}
 				}
-					// This is a heavy load. When using 16 (10) bit color, use C language.
-				else if(getColorMode() == 48 || getColorMode() == 64)
+				// This is a heavy load. When using 16 (10) bit color, use C language.
+				else if (getColorMode() == 48 || getColorMode() == 64)
 				{
 					int bpp = getColorMode() / 8;
 					int size = getWidth() * getHeight();
-					switch(m_CArtCam.GetColorMode())
+					switch (m_CArtCam.GetColorMode())
 					{
 						case 42: case 58:
-					for(int i=0; i<size; i++)
-					{
-						pdest[i*3]   = (byte)((m_pCapture[i*bpp+1] << 6) | (m_pCapture[i*bpp]   >> 2));
-						pdest[i*3+1] = (byte)((m_pCapture[i*bpp+3] << 6) | (m_pCapture[i*bpp+2] >> 2));
-						pdest[i*3+2] = (byte)((m_pCapture[i*bpp+5] << 6) | (m_pCapture[i*bpp+4] >> 2));
-					}
+							for (int i = 0; i < size; i++)
+							{
+								pdest[i * 3] = (byte)((m_pCapture[i * bpp + 1] << 6) | (m_pCapture[i * bpp] >> 2));
+								pdest[i * 3 + 1] = (byte)((m_pCapture[i * bpp + 3] << 6) | (m_pCapture[i * bpp + 2] >> 2));
+								pdest[i * 3 + 2] = (byte)((m_pCapture[i * bpp + 5] << 6) | (m_pCapture[i * bpp + 4] >> 2));
+							}
 							break;
 						case 44: case 60:
-							for(int i=0; i<size; i++)
+							for (int i = 0; i < size; i++)
 							{
-								pdest[i*3]   = (byte)((m_pCapture[i*bpp+1] << 4) | (m_pCapture[i*bpp]   >> 4));
-								pdest[i*3+1] = (byte)((m_pCapture[i*bpp+3] << 4) | (m_pCapture[i*bpp+2] >> 4));
-								pdest[i*3+2] = (byte)((m_pCapture[i*bpp+5] << 4) | (m_pCapture[i*bpp+4] >> 4));
+								pdest[i * 3] = (byte)((m_pCapture[i * bpp + 1] << 4) | (m_pCapture[i * bpp] >> 4));
+								pdest[i * 3 + 1] = (byte)((m_pCapture[i * bpp + 3] << 4) | (m_pCapture[i * bpp + 2] >> 4));
+								pdest[i * 3 + 2] = (byte)((m_pCapture[i * bpp + 5] << 4) | (m_pCapture[i * bpp + 4] >> 4));
 							}
 							break;
 						case 46: case 62:
-							for(int i=0; i<size; i++)
+							for (int i = 0; i < size; i++)
 							{
-								pdest[i*3]   = (byte)((m_pCapture[i*bpp+1] << 2) | (m_pCapture[i*bpp]   >> 6));
-								pdest[i*3+1] = (byte)((m_pCapture[i*bpp+3] << 2) | (m_pCapture[i*bpp+2] >> 6));
-								pdest[i*3+2] = (byte)((m_pCapture[i*bpp+5] << 2) | (m_pCapture[i*bpp+4] >> 6));
-				}
+								pdest[i * 3] = (byte)((m_pCapture[i * bpp + 1] << 2) | (m_pCapture[i * bpp] >> 6));
+								pdest[i * 3 + 1] = (byte)((m_pCapture[i * bpp + 3] << 2) | (m_pCapture[i * bpp + 2] >> 6));
+								pdest[i * 3 + 2] = (byte)((m_pCapture[i * bpp + 5] << 2) | (m_pCapture[i * bpp + 4] >> 6));
+							}
 							break;
 						case 48: case 64:
-							for(int i=0; i<size; i++)
+							for (int i = 0; i < size; i++)
 							{
-								pdest[i*3]   = (byte)((m_pCapture[i*bpp+1] << 0) | (m_pCapture[i*bpp]   >> 8));
-								pdest[i*3+1] = (byte)((m_pCapture[i*bpp+3] << 0) | (m_pCapture[i*bpp+2] >> 8));
-								pdest[i*3+2] = (byte)((m_pCapture[i*bpp+5] << 0) | (m_pCapture[i*bpp+4] >> 8));
+								pdest[i * 3] = (byte)((m_pCapture[i * bpp + 1] << 0) | (m_pCapture[i * bpp] >> 8));
+								pdest[i * 3 + 1] = (byte)((m_pCapture[i * bpp + 3] << 0) | (m_pCapture[i * bpp + 2] >> 8));
+								pdest[i * 3 + 2] = (byte)((m_pCapture[i * bpp + 5] << 0) | (m_pCapture[i * bpp + 4] >> 8));
 							}
 							break;
 					}
@@ -1298,7 +1298,7 @@ namespace Sample_CS
 				else
 				{
 					int size = getSize();
-					for(int i=0; i<size; i++)
+					for (int i = 0; i < size; i++)
 					{
 						pdest[i] = m_pCapture[i];
 					}
@@ -1310,12 +1310,12 @@ namespace Sample_CS
 
 			// Image display
 			int iWidth = m_Bitmap.Width;
-			int iHeight= m_Bitmap.Height;
+			int iHeight = m_Bitmap.Height;
 			g.DrawImage(m_Bitmap, new Rectangle(0, 0, getWidth() * m_ViewScale / 100, getHeight() * m_ViewScale / 100));
 
 			// Line drawing
 			Point MousePos = this.PointToClient(Cursor.Position);
-			if( (MousePos.X < 0) || (MousePos.Y < 0) || (MousePos.X >= iWidth) || (MousePos.Y >= iHeight)) return;
+			if ((MousePos.X < 0) || (MousePos.Y < 0) || (MousePos.X >= iWidth) || (MousePos.Y >= iHeight)) return;
 
 			Pen pen = new Pen(Color.Red, 1);
 			Point Pos = new Point(MousePos.X - ImagePanel.AutoScrollPosition.X, MousePos.Y - ImagePanel.AutoScrollPosition.Y);
@@ -1325,7 +1325,7 @@ namespace Sample_CS
 
 			if (1300 <= (m_CArtCam.GetDllVersion() & 0xFFFF))
 			{
-				int Exposure = m_CArtCam.GetRealExposureTime();	// (micro sec)
+				int Exposure = m_CArtCam.GetRealExposureTime(); // (micro sec)
 				float fExposure = (float)Exposure / 1000.0f;
 				sbPanelExp.Text = "Exp: " + fExposure.ToString() + "msec";
 			}
@@ -1336,14 +1336,14 @@ namespace Sample_CS
 		}
 
 		private void ImageBox_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-				{
+		{
 			DrawImage(e.Graphics);
 		}
 
 		private void Form1_Resize(object sender, System.EventArgs e)
-										{
-			ImagePanel.SetBounds(0,0,this.ClientRectangle.Right,this.ClientRectangle.Bottom - 16);
-			statusBar1.SetBounds(0,this.ClientRectangle.Bottom - 16, this.ClientRectangle.Right, 16);
+		{
+			ImagePanel.SetBounds(0, 0, this.ClientRectangle.Right, this.ClientRectangle.Bottom - 16);
+			statusBar1.SetBounds(0, this.ClientRectangle.Bottom - 16, this.ClientRectangle.Right, 16);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -1360,7 +1360,7 @@ namespace Sample_CS
 			Form modalDialog = new Form2(m_CArtCam);
 			DialogResult result = modalDialog.ShowDialog();
 
-			switch(m_PreviewMode)
+			switch (m_PreviewMode)
 			{
 				case 0: menuPreview_Click(sender, e); break;
 				case 1: menuCallback_Click(sender, e); break;
@@ -1387,11 +1387,11 @@ namespace Sample_CS
 		private void menuFile_Popup(object sender, System.EventArgs e)
 		{
 			// Check if saving is available (if an image has been captured at least once, it is possible).
-			if(m_SaveFlg)
+			if (m_SaveFlg)
 			{
 				menuSave.Enabled = true;
-			} 
-			else 
+			}
+			else
 			{
 				menuSave.Enabled = false;
 			}
@@ -1401,8 +1401,8 @@ namespace Sample_CS
 			if (ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_DS == m_CurrentCameraType)
 			{
 				menuRec.Enabled = true;
-			} 
-			else 
+			}
+			else
 			{
 				menuRec.Enabled = false;
 			}
@@ -1411,7 +1411,7 @@ namespace Sample_CS
 		private void menuView_Popup(object sender, System.EventArgs e)
 		{
 			// Disable playback if device is not connected
-			if(-1 == m_SelectDevice)
+			if (-1 == m_SelectDevice)
 			{
 				menuPreview.Enabled = false;
 				menuCallback.Enabled = false;
@@ -1420,7 +1420,7 @@ namespace Sample_CS
 				menuTrigger.Enabled = false;
 				menuStop.Enabled = false;
 			}
-			else 
+			else
 			{
 				menuPreview.Enabled = true;
 				menuCallback.Enabled = true;
@@ -1432,12 +1432,12 @@ namespace Sample_CS
 				switch (m_CurrentCameraType)
 				{
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_DS:
-					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_USTC:	
-					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_CNV:	
+					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_USTC:
+					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_CNV:
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_200SH:
-					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_098:	
+					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_098:
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_150P:
-					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_500P:		
+					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_500P:
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_130MI_MOUT:
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_150P3_MOUT:
 					case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_1000MI_HD2:
@@ -1463,9 +1463,9 @@ namespace Sample_CS
 
 			switch (m_CurrentCameraType)
 			{
-					//case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_DS:		// DS
-				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_USTC:		// UST
-				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_CNV:		// CNV
+				//case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_DS:		// DS
+				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_USTC:      // UST
+				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_CNV:       // CNV
 					menuAnalog.Enabled = false;
 					break;
 
@@ -1493,16 +1493,16 @@ namespace Sample_CS
 		private void menuItem7_Click_1(object sender, System.EventArgs e)
 		{
 			Form modalDialog;
-			switch(m_CurrentCameraType){
-			case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_130MI_MOUT:
-			case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_150P3_MOUT:	
-				modalDialog = new Form5(m_CArtCam);	
-				modalDialog.ShowDialog(); 
-			break;
-			case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_1000MI_HD2:
-				modalDialog = new Form7(m_CArtCam);	
-				modalDialog.ShowDialog();
-			break;
+			switch (m_CurrentCameraType) {
+				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_130MI_MOUT:
+				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_150P3_MOUT:
+					modalDialog = new Form5(m_CArtCam);
+					modalDialog.ShowDialog();
+					break;
+				case ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_1000MI_HD2:
+					modalDialog = new Form7(m_CArtCam);
+					modalDialog.ShowDialog();
+					break;
 			}
 		}
 
@@ -1518,15 +1518,15 @@ namespace Sample_CS
 			String[] stArray = stMenu.Split('\t');
 			String szDllName = String.Format("{0}.dll", stArray[0]);
 			bool res = m_CArtCam.LoadLibrary(szDllName);
-			if (!res){
+			if (!res) {
 				MessageBox.Show("DLL is not found.\nIt may have been relocated after executing.");
 				return;
-			}else{
+			} else {
 				m_CurrentCameraType = (ARTCAM_CAMERATYPE)(m_CArtCam.GetDllVersion() >> 16);
 			}
 			// Initialize is to be called first
 			// By setting Window Handle here, WM_ERROR can be obtained
-			if (!m_CArtCam.Initialize(this.Handle)){
+			if (!m_CArtCam.Initialize(this.Handle)) {
 				MessageBox.Show("Failed to initialize SDK");
 				return;
 			}
@@ -1534,32 +1534,32 @@ namespace Sample_CS
 			m_SataType = SataType;
 
 			// Check menu
-			for (int i = 0; i < m_DllCount; i++){
+			for (int i = 0; i < m_DllCount; i++) {
 				menuDLL.MenuItems[(int)i + 1].Checked = false;
 			}
 			// Select SATA camera type when use Sata.dll
-			if(-1 != SataType && ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_SATA == m_CurrentCameraType){
+			if (-1 != SataType && ARTCAM_CAMERATYPE.ARTCAM_CAMERATYPE_SATA == m_CurrentCameraType) {
 				m_CArtCam.SetCameraType(SataType);
 				m_CArtCam.SetDeviceNumber(0);
-			}else{
-				menuDLL.MenuItems[(int)DllType+1].Checked = true;
+			} else {
+				menuDLL.MenuItems[(int)DllType + 1].Checked = true;
 			}
 
 
 			// Device modification menu
-			for(int i=0; i<8; i++)
+			for (int i = 0; i < 8; i++)
 			{
-				StringBuilder Temp = new StringBuilder( 256 );
-				if(0 != m_CArtCam.GetDeviceName(i, Temp, 256))
+				StringBuilder Temp = new StringBuilder(256);
+				if (0 != m_CArtCam.GetDeviceName(i, Temp, 256))
 				{
 					menuDevice.MenuItems[i].Text = Temp.ToString();
 					menuDevice.MenuItems[i].Enabled = true;
-	}
+				}
 				else
 				{
 					menuDevice.MenuItems[i].Enabled = false;
 				}
-}
+			}
 
 			DeviceChange(sender, e, 0);
 
@@ -1568,30 +1568,30 @@ namespace Sample_CS
 
 		private void statusBar1_PanelClick(object sender, System.Windows.Forms.StatusBarPanelClickEventArgs e)
 		{
-			if(e.StatusBarPanel == sbPanelScale)
+			if (e.StatusBarPanel == sbPanelScale)
 			{
-				if(e.Button.Equals(System.Windows.Forms.MouseButtons.Left))
+				if (e.Button.Equals(System.Windows.Forms.MouseButtons.Left))
 				{
-					switch(m_ViewScale)
+					switch (m_ViewScale)
 					{
-						case  25:	m_ViewScale =  50;	break;
-						case  50:	m_ViewScale = 100;	break;
-						case 100:	m_ViewScale = 150;	break;
-						case 150:	m_ViewScale = 200;	break;
-						case 200:	m_ViewScale = 400;	break;
-						default :	m_ViewScale = 400;	break;
+						case 25: m_ViewScale = 50; break;
+						case 50: m_ViewScale = 100; break;
+						case 100: m_ViewScale = 150; break;
+						case 150: m_ViewScale = 200; break;
+						case 200: m_ViewScale = 400; break;
+						default: m_ViewScale = 400; break;
 					}
 				}
 				else
 				{
-					switch(m_ViewScale)
+					switch (m_ViewScale)
 					{
-						case  50:	m_ViewScale =  25;	break;
-						case 100:	m_ViewScale =  50;	break;
-						case 150:	m_ViewScale = 100;	break;
-						case 200:	m_ViewScale = 150;	break;
-						case 400:	m_ViewScale = 200;	break;
-						default :	m_ViewScale =  25;	break;
+						case 50: m_ViewScale = 25; break;
+						case 100: m_ViewScale = 50; break;
+						case 150: m_ViewScale = 100; break;
+						case 200: m_ViewScale = 150; break;
+						case 400: m_ViewScale = 200; break;
+						default: m_ViewScale = 25; break;
 					}
 				}
 			}
@@ -1620,47 +1620,89 @@ namespace Sample_CS
 
 		private void menuSequence_Click(object sender, EventArgs e)
 		{
-			/*
-			// Plan to move this access modifier to Form8
-			Form8 sfm36Form = new Form8();
-			sfm36Form.ShowDialog();
-			*/
-
 			// ********************************************************
-			// The variables that the user needs to change
+			// The variables that the user needs to change.
+			// The user is directed to Form8 to set these variables.
 			// ********************************************************
 			// string prefix = DateTime.Now.ToString("yyyyMMddHHmmss");
-			string prefix = "ArtCam990_grey_LED770_zero-gain";          
-			int startExposure = 10; // t in microseconds?
-			// int endExposure = 2000;
-			int exposureStep = 10;     // T in microseconds?
-			int numberPerSet = 2;     // n
-			int totalSets = 10;       // N
-			int currentExposure = startExposure;
+			double exp_t; // initial exposure time t, in microseconds
+			double interval_T; // time interval between sets ,T in microseconds
+			int perSet_n; // number of images per set, n
+			int numSet_N; // number of sets, N
+			string saveFolder = "C:/Users/sfm36/Documents/Artray/EMVA_1288/Images";
+			string prefix = "ArtCam990_grey_LED770_zero-gain"; // the base filename
 			// ********************************************************
 
-			// Ok, lets loop over some stuff
-			// int totalSteps = (int)Math.Ceiling(((double)(endExposure - startExposure)) / exposureStep + 1);
+			// Create a string array to store the variables from Form8
+			string[] initialSetUp = new string[6] { "100", "100", "1", "2", saveFolder, prefix};
+			string location = "";
+
+			//Open form 8, then retrieve updated values for string array
+			using (Form8 frm = new Form8())
+			{
+				if (frm.ShowDialog() == DialogResult.OK)
+					initialSetUp = frm.GetValuesInForm8;
+			}
+
+			// Take string variables from Form8 and convert them to numbers
+			exp_t = Convert.ToDouble(initialSetUp[0]);
+			interval_T = Convert.ToDouble(initialSetUp[1]);
+			perSet_n = Convert.ToInt32(initialSetUp[2]);
+			numSet_N = Convert.ToInt32(initialSetUp[3]);
+			saveFolder = initialSetUp[4];
+			prefix = initialSetUp[5];
+			// Console output for debugging assistance
+			Console.WriteLine("initial exposure time, t... {0}", exp_t);
+			Console.WriteLine("time interval between sets, T... {0}", interval_T);
+			Console.WriteLine("number of images per set, n... {0}", perSet_n);
+			Console.WriteLine("number of sets, N... {0}", numSet_N);
+			Console.WriteLine("Save in... {0}", saveFolder);
+			Console.WriteLine("Base filename... {0}", prefix);
+
+			//convert initial exposure time to seconds
+			double currentExposure = exp_t/1000000;
+			double microseconds = exp_t; // probably don't need this variable
+
+			if (!m_CArtCam.IsInit())
+			{
+				MessageBox.Show("Select available device");
+				return;
+			}
 
 			//Acquire and save image sequence
-			for (int step = 0; step < totalSets; step++)
-			{				
-				m_CArtCam.SetExposureTime(currentExposure);
-
-				for (int i = 0; i < numberPerSet; i++)
+			for (int step = 0; step < numSet_N; step++)
+			{
+				for (int i = 0; i < perSet_n; i++)
 				{
-					// Acquire image
+					// Start image acquisition
 					Console.WriteLine("Acquiring image at exposure time = {0}...", currentExposure);
-					menuSnapshot_Click(sender, e);
 
-					// Set up destination folder  and filename for image
-					// Example filname: ArtCam990_grey_LED770_zero-gain_Exp0003000us__005.tif
-					string location =	string.Format
-										("{0}/{1}_Exp{2,7}us__{3,3}.tif", 
-										Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), 
+					// Release device
+					m_CArtCam.Close();
+
+					// Create area for capturing
+					CreateBitmap();
+
+					ImageBox.SetBounds(0, 0, getWidth(), getHeight());
+
+					m_CArtCam.SetExposureTimeEx(currentExposure); // Artray recommendation
+					Console.WriteLine("Before capture, GetExposureTimeEx {0}", m_CArtCam.GetExposureTimeEx());
+
+					// Capture image
+					m_CArtCam.SnapShot(m_pCapture, getSize(), 1);
+					Console.WriteLine("After capture, GetExposureTimeEx {0}", m_CArtCam.GetExposureTimeEx());
+
+					// The line below was used for debugging
+					microseconds = currentExposure * 1000000;
+
+					// Set up destination folder and filename for image
+					// Example filename: ArtCam990_grey_LED770_zero-gain_Exp0003000us__005.tif
+					location =	string.Format
+									    ("{0}/{1}_Exp{2,7}us__{3,3}.tif",
+										saveFolder,
 										prefix,
-										currentExposure.ToString("D7"),
-										(numberPerSet * step + i + 1).ToString("D3"));
+										microseconds.ToString("0000000"),
+										(perSet_n * step + i + 1).ToString("D3")); 
 
 					// Wait three seconds (used for debug)
 					//System.Threading.Thread.Sleep(3000);
@@ -1672,15 +1714,16 @@ namespace Sample_CS
 						Console.WriteLine("Failed to save image, returning");
 						return;
 					}
+					
 				}
-
 				// increment exposure time in outer loop
-				currentExposure += exposureStep;
+				currentExposure += interval_T/1000000;
 			}
 
 		}
 
 	}
+
 }
 
 
